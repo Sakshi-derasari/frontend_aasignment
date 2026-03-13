@@ -1,0 +1,14 @@
+1.	Define the terms: Website, Webpage, Web browser, Web server, HTML,CSS.
+
+•	Website: A website is a collection of related webpages that are stored on a web server and accessed through the internet using a domain name. It contains information such as text, images, videos, and links. Websites are created for various purposes like education, business, and entertainment.
+
+•	webpage: A webpage is a single document or page on a website that is viewed in a web browser. It is usually written using HTML and may contain text, images, audio, video, and hyperlinks. Multiple webpages together form a website. Each webpage has its own unique URL (web address).
+
+•	web browser: A web browser is a software application used to access, retrieve, and display webpages from the internet. It interprets HTML and CSS code and presents the content in a readable format for users.
+
+•	web server: A web server is a computer system or software that stores websites and delivers webpages to users when they request them through a web browser. It processes requests from the browser and sends the required webpage over the internet.
+
+•	HTML: HTML (Hyper Text Markup Language) is the standard markup language used to create and structure webpages. It uses tags to define elements such as headings, paragraphs, images, tables, and links. HTML forms the basic structure of a webpage.
+
+•	CSS: CSS (Cascading Style Sheets) is used to style and design webpages. It controls the layout, colours, fonts, spacing, and visual appearance of HTML elements. CSS helps make webpages more attractive and user-friendly.
+
