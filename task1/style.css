@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('starimage.jpg');
+}
+
+/* Main Box */
+.container {
+    /* width: 400px; */
+    padding: 40px;
+    background-color: #3535e2;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.285);
+    color: white;
+    text-align: center;
+    border: 5px solid rgb(88, 215, 241);
+}
+
+.container h1 {
+    margin-bottom: 10px;
+}
+
+.container p {
+    font-size: 14px;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 10px 5px;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.874);
+    background: transparent;
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.input-group textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Button */
+.btn {
+    margin-top: 10px;
+}
+
+.btn button {
+    padding: 10px 30px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.btn button:hover {
+    background: white;
+    color: #2a5298;
+}
