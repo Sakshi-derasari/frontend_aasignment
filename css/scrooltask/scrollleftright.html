@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow Scroll</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f4f4f4;
+      font-family: Arial;
+    }
+
+    .container {
+      width: 80%;
+      border: 2px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .scroll-box {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      outline: none;
+    }
+
+    .box {
+      min-width: 150px;
+      height: 150px;
+      margin: 10px;
+      background: #5154e8;
+      color: white;
+      font-size: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 05px;
+      flex-shrink: 0;
+    }
+    
+    .scroll-box::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scroll-box:focus {
+      border: 2px solid #70e374;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="scroll-box" tabindex="0">
+    <div class="box">1</div>        
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+    <div class="box">7</div>
+    <div class="box">8</div>
+    <div class="box">9</div>
+    <div class="box">10</div>
+  </div>      
+</div>
+
+</body>
+</html>
