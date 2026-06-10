@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bio-Stack Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+      <button id="themeBtn" class="theme-btn" aria-label="Toggle theme">
+        <span class="icon-light">☀️</span>
+        <span class="icon-dark">🌙</span>
+      </button>
+    </div>
+
+    <!-- Profile Header -->
+    <div class="profile">
+      <div class="avatar">👤</div>
+      <h2>@creator</h2>
+      <p class="bio">My link collection</p>
+    </div>
+
+    <!-- Form -->
+    <div class="form">
+      <input type="text" id="title" placeholder="Title (e.g. Instagram)" autocomplete="off">
+      <input type="text" id="url" placeholder="URL (https://...)" autocomplete="off">
+      <button id="addBtn">Add Link</button>
+      <p id="error" class="error"></p>
+    </div>
+
+    <!-- Links -->
+    <h3>My Links</h3>
+    <div id="preview"></div>
+    <p id="empty" class="empty-msg">No links yet. Add your first one above!</p>
+
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
