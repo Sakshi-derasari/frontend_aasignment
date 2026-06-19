@@ -1,0 +1,26 @@
+{
+  "employees": [
+    {
+      "name": "sakshi",
+      "email": "a@gmail.com",
+      "phone": "1234567890",
+      "address": "abc, street",
+      "id": "7YsJrZdpreg"
+    },
+    {
+      "name": "hemu",
+      "email": "h@gmail.com",
+      "phone": "1234567890",
+      "address": "123, sreet",
+      "id": "A1KQX_VHCN8"
+    },
+    {
+      "name": "mohit",
+      "email": "m@gmail.com",
+      "phone": "1234567890",
+      "address": "acd, sreet",
+      "id": "Z9akhf17EAI"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

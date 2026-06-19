@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Invoice Generator</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+/* FORM */
+.form-box {
+    background: white;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+/* INVOICE */
+.invoice {
+    background: #fff;
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* BILL SECTION */
+.bill-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* SUMMARY */
+.summary {
+    display: flex;
+    margin-top: 20px;
+}
+
+.summary div {
+    flex: 1;
+    background: orange;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* TOTAL */
+.total {
+    text-align: right;
+    margin-top: 20px;
+}
+
+@media print {
+
+    /* Hide form section */
+    .form-box, button {
+        display: none;
+    }
+
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .invoice {
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        padding: 20px;
+    }
+
+    /* FORCE COLORS TO PRINT */
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Header styling */
+    .header h2 {
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    /* Summary bar (important) */
+    .summary div {
+        background: #f39c12 !important;
+        color: white !important;
+        font-weight: bold;
+        border: none;
+    }
+
+    /* Table styling */
+    table {
+        border: 1px solid #000;
+    }
+
+    th {
+        background: #f39c12 !important;
+        color: white !important;
+    }
+
+    td, th {
+        border: 1px solid #000;
+    }
+
+    /* Total section */
+    .total {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    /* Signature spacing */
+    .signature {
+        margin-top: 50px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= FORM ================= -->
+<div class="form-box">
+<h3>Enter Details</h3>
+
+<input type="text" id="name" placeholder="Customer Name"><br><br>
+<input type="text" id="phone" placeholder="Phone"><br><br>
+<textarea id="address" placeholder="Address"></textarea><br><br>
+
+<input type="text" id="pname" placeholder="Product Name"><br><br>
+<input type="number" id="price" placeholder="Price"><br><br>
+<input type="number" id="qty" placeholder="Quantity"><br><br>
+
+<button onclick="addData()">Add Item</button>
+<button onclick="setDetails()">Generate Invoice</button>
+<button onclick="printInvoice()">Print</button>
+</div>
+
+<!-- ================= INVOICE ================= -->
+<div class="invoice">
+
+<div class="header">
+    <h2>My Shop</h2>
+    <div>
+        <h3>Invoice</h3>
+        <p id="invno"></p>
+    </div>
+</div>
+
+<div class="bill-section">
+    <div>
+        <h4>Bill To</h4>
+        <p id="cname"></p>
+        <p id="caddress"></p>
+        <p id="cphone"></p>
+    </div>
+
+    <div>
+        <p><strong>Date:</strong> <span id="date"></span></p>
+    </div>
+</div>
+
+<div class="summary">
+    <div>Invoice No<br><span id="sInv"></span></div>
+    <div>Date<br><span id="sDate"></span></div>
+    <div>Total<br>₹ <span id="sTotal"></span></div>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody id="pdata"></tbody>
+</table>
+
+<div class="total">
+    <p>Subtotal: ₹ <span id="subtotal">0</span></p>
+    <p>GST (10%): ₹ <span id="gst">0</span></p>
+    <h3>Total: ₹ <span id="grand">0</span></h3>
+</div>
+
+</div>
+
+<script>
+let total = 0;
+
+/* ADD ITEM */
+function addData() {
+    let pname = document.getElementById("pname").value;
+    let price = Number(document.getElementById("price").value);
+    let qty = Number(document.getElementById("qty").value);
+
+    if (!pname || !price || !qty) {
+        alert("Fill all product details");
+        return;
+    }
+
+    let amount = price * qty;
+    total += amount;
+
+    let row = `
+        <tr>
+            <td>${pname}</td>
+            <td>${qty}</td>
+            <td>${price}</td>
+            <td>${amount}</td>
+        </tr>
+    `;
+
+    document.getElementById("pdata").innerHTML += row;
+
+    updateTotals();
+
+    // clear inputs
+    document.getElementById("pname").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("qty").value = "";
+}
+
+/* TOTAL CALCULATION */
+function updateTotals() {
+    let gst = total * 0.10;
+    let grand = total + gst;
+
+    document.getElementById("subtotal").innerText = total;
+    document.getElementById("gst").innerText = gst.toFixed(2);
+    document.getElementById("grand").innerText = grand.toFixed(2);
+    document.getElementById("sTotal").innerText = grand.toFixed(2);
+}
+
+/* SET CUSTOMER DETAILS */
+function setDetails() {
+    document.getElementById("cname").innerText =
+        document.getElementById("name").value;
+
+    document.getElementById("cphone").innerText =
+        document.getElementById("phone").value;
+
+    document.getElementById("caddress").innerText =
+        document.getElementById("address").value;
+
+    let d = new Date();
+    let inv = "INV-" + Math.floor(Math.random() * 100000);
+
+    document.getElementById("invno").innerText = inv;
+    document.getElementById("sInv").innerText = inv;
+
+    document.getElementById("date").innerText = d.toLocaleDateString();
+    document.getElementById("sDate").innerText = d.toLocaleDateString();
+}
+
+/* PRINT */
+function printInvoice() {
+    window.print();
+}
+</script>
+</body>
+</html>

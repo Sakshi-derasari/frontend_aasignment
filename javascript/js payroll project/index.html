@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Payroll System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Employee Payroll System</h1>
+
+<!-- form -->
+<form id="empForm">
+  <input type="hidden" id="editIndex">
+
+  <input type="text" id="name" placeholder="Employee Name" required>
+  <input type="number" id="salary" placeholder="Basic Salary" required>
+
+  <button type="submit">Save Employee</button>
+</form>
+
+<!-- Search -->
+<input type="text" id="search" placeholder="Search employee...">
+
+<!-- Table -->
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Basic</th>
+      <th>HRA</th>
+      <th>DA</th>
+      <th>Tax</th>
+      <th>Net Salary</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+
+<script src="script.js"></script>
+</body>
+</html>

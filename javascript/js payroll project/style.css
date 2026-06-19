@@ -1,0 +1,50 @@
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://png.pngtree.com/background/20250108/original/pngtree-salary-overtime-binder-data-finance-report-business-with-graph-analysis-in-picture-image_15445544.jpg);
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  color: rgb(104, 210, 229);
+}
+
+form {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  margin: 5px;
+}
+
+button {
+  padding: 10px 15px;
+  cursor: pointer;
+  background: rgb(73, 81, 192);
+  color: white;
+  border: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgb(131, 199, 218);
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #120f0f;
+  text-align: center;
+}
+
+button.edit {
+  background: green;
+}
+
+button.delete {
+  background: red;
+}

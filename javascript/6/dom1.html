@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            #invoice,
+            #invoice * {
+                visibility: visible;
+            }
+
+            #invoice {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+
+            button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <p id="para1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, dicta? Soluta explicabo quod,
+        quam quo odio blanditiis eius ipsam alias at totam sint cupiditate quasi voluptatum natus ea recusandae
+        voluptatibus.</p>
+    <button onclick="changeTextP()">Change Text</button>
+
+    <fieldset>
+        <legend>Invoice Maker</legend>
+        <form>
+            <h2>Invoice</h2>
+
+            <label>Customer Name:</label>
+            <input type="text" id="cname">
+            <br><br>
+            <label>Phone Number:</label>
+            <input type="text" id="cphone">
+            <br><br>
+            <label>Address:</label>
+            <textarea id="caddress"></textarea>
+            <br><br>
+            <label>Invoice No:</label>
+            <input type="text" id="invno">
+            <br><br>
+            <label>Date:</label>
+            <input type="date" id="invdate">
+            <br><br>
+            <label for="">Product Name</label>
+            <input type="text" name="" id="pname">
+            <br><br>
+            <label for="">Price</label>
+            <input type="text" name="" id="price">
+            <br><br>
+            <label for="">Qty</label>
+            <input type="text" name="" id="qty">
+            <br><br>
+            <button type="button" onclick="genBill()">Click</button>
+        </form>
+
+        <h3>Total: ₹ <span id="total">0</span></h3>
+
+        <br><br>
+        <p>Authorized Signature: ____________________</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Productname</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                </tr>
+
+            </thead>
+            <tbody id="pdata">
+
+            </tbody>
+        </table>
+    </fieldset>
+
+
+    <script>
+        function changeTextP() {
+            let text1 = prompt('Enter text');
+            let p1 = document.getElementById('para1');
+            p1.textContent = text1;
+
+        }
+
+        // function genBill(){
+        //     let pname = document.getElementById('pname').value;
+        //     let price = document.getElementById('price').value;
+        //     let qty = document.getElementById('qty').value;
+
+        //     let str = `
+        //           <tr>
+        //             <td>${pname}</td>
+        //             <td>${price}</td>
+        //             <td>${qty}</td>
+        //             <td>${price*qty}</td>
+        //         </tr>
+        //     `;
+        //     document.getElementById('pdata').innerHTML=str;
+
+        // }
+
+
+        let total = 0;
+
+        function genBill() {
+            let pname = document.getElementById('pname').value;
+            let price = Number(document.getElementById('price').value);
+            let qty = Number(document.getElementById('qty').value);
+
+            let subtotal = price * qty;
+            total += subtotal;
+
+            let str = `
+            <tr>
+                <td>${pname}</td>
+                <td>${price}</td>
+                <td>${qty}</td>
+                <td>${subtotal}</td>
+            </tr>`;
+
+            // Append instead of replace
+            document.getElementById('pdata').innerHTML += str;
+
+            // Show total
+            document.getElementById('total').innerText = total;
+
+            // Clear inputs
+            document.getElementById('pname').value = "";
+            document.getElementById('price').value = "";
+            document.getElementById('qty').value = "";
+        }
+
+        function setCustomerDetails() {
+            document.getElementById('showName').innerText =
+                document.getElementById('cname').value;
+
+            document.getElementById('showPhone').innerText =
+                document.getElementById('cphone').value;
+
+            document.getElementById('showAddress').innerText =
+                document.getElementById('caddress').value;
+
+            document.getElementById('showInv').innerText =
+                document.getElementById('invno').value;
+
+            document.getElementById('showDate').innerText =
+                document.getElementById('invdate').value;
+        }
+        function printInvoice() {
+            window.print();
+        }
+    </script>
+    <div id="invoice">
+        <h1>My Shop</h1>
+        <p><strong>Invoice No:</strong> <span id="showInv"></span></p>
+        <p><strong>Date:</strong> <span id="showDate"></span></p>
+
+        <h3>Customer Details</h3>
+        <p>Name: <span id="showName"></span></p>
+        <p>Phone: <span id="showPhone"></span></p>
+        <p>Address: <span id="showAddress"></span></p>
+    </div>
+    <button type="button" onclick="setCustomerDetails()">Generate Invoice</button>
+    <button onclick="printInvoice()">Print / Save PDF</button>
+</body>
+</html>

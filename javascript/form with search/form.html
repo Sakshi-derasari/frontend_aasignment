@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fruit Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+
+  <!-- 🔸 Add Fruit Form -->
+  <div class="card shadow mb-4">
+    <div class="card-header bg-primary text-white">
+      <h4>Add Fruit</h4>
+    </div>
+    <div class="card-body">
+      <form id="fruitForm">
+        <div class="row">
+          <div class="col-md-8">
+            <input type="text" id="fruitInput" class="form-control" placeholder="Enter fruit name" required>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-success w-100">Add Fruit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 🔍 Search -->
+  <div class="mb-3">
+    <input type="text" id="searchInput" class="form-control" placeholder="Search fruit...">
+  </div>
+
+  <!-- 🔸 Fruit Table -->
+  <div class="card shadow">
+    <div class="card-header bg-dark text-white">
+      <h4>Fruit List</h4>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-hover text-center">
+        <thead class="table-secondary">
+          <tr>
+            <th>#</th>
+            <th>Fruit Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="fruitTable">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let fruits = [];
+let editIndex = null;
+
+// Render Table
+function renderTable(data = fruits) {
+  let table = document.getElementById("fruitTable");
+  table.innerHTML = "";
+
+  data.forEach((fruit, index) => {
+    table.innerHTML += `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${fruit}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" onclick="editFruit(${index})">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteFruit(${index})">Delete</button>
+        </td>
+      </tr>
+    `;
+  });
+}
+
+// Add / Update Fruit
+document.getElementById("fruitForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  let input = document.getElementById("fruitInput");
+  let value = input.value.trim();
+
+  if (value === "") return;
+
+  if (editIndex === null) {
+    fruits.push(value);
+  } else {
+    fruits[editIndex] = value;
+    editIndex = null;
+  }
+
+  input.value = "";
+  renderTable();
+});
+
+// Delete
+function deleteFruit(index) {
+  fruits.splice(index, 1);
+  renderTable();
+}
+
+// Edit
+function editFruit(index) {
+  document.getElementById("fruitInput").value = fruits[index];
+  editIndex = index;
+}
+
+// Search
+document.getElementById("searchInput").addEventListener("keyup", function() {
+  let search = this.value.toLowerCase();
+
+  let filtered = fruits.filter(fruit =>
+    fruit.toLowerCase().includes(search)
+  );
+
+  renderTable(filtered);
+});
+
+// Initial Render
+
+renderTable();
+</script>
+
+</body>
+</html>
