@@ -1,5 +1,4 @@
-import React from "react";
-import useFetchData from "./useFetchData";
+import useFetchData from "../../hooks/useFetchData.js";
 
 function FlipkartProductList() {
   const { data, loading, error } = useFetchData(
@@ -7,11 +6,12 @@ function FlipkartProductList() {
   );
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching data</p>;
+  if (error) return <p>{error}</p>;
 
   return (
-    <div>
-      <h2>🛒 Product List</h2>
+    <div style={{ marginTop: "20px" }}>
+      <h2>Products</h2>
+
       {data.map((item) => (
         <p key={item.id}>{item.title}</p>
       ))}
