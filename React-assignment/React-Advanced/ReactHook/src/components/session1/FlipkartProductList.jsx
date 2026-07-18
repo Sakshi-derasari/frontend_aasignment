@@ -1,4 +1,7 @@
 import useFetchData from "../../hooks/useFetchData.js";
+import test from "../../hooks/useFetchData.js";
+
+console.log(test);
 
 function FlipkartProductList() {
   const { data, loading, error } = useFetchData(
@@ -17,6 +20,7 @@ function FlipkartProductList() {
       ))}
     </div>
   );
-}
+};
 
 export default FlipkartProductList;
+export default useFetchData;
