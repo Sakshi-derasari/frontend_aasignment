@@ -5,6 +5,7 @@ import LikeCounter from './components/session1/LikeCounter'
 import { UserContext } from './components/session1/UserContext'
 import Parent from './components/session1/Parent'
 import FlipkartProductList from './components/session1/FlipkartProductList'
+import LiveClock from './components/session2/LiveClock'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -35,6 +36,7 @@ function App() {
         <Parent/>
       </UserContext.Provider>
       <FlipkartProductList/>
+      <LiveClock/>
     </div>
   )
 }
