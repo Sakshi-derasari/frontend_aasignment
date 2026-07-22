@@ -6,6 +6,8 @@ import { UserContext } from './components/session1/UserContext'
 import Parent from './components/session1/Parent'
 import FlipkartProductList from './components/session1/FlipkartProductList'
 import LiveClock from './components/session2/LiveClock'
+import MoviesList from './components/session2/MoviesList'
+import PostCard from './components/session2/PostCard'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -37,6 +39,21 @@ function App() {
       </UserContext.Provider>
       <FlipkartProductList/>
       <LiveClock/>
+      <MoviesList/>
+
+      <h1 style={{ textAlign: "center" }}>Instagram Like Feature</h1>
+
+      <PostCard
+        username="sakshi_d"
+        image="https://picsum.photos/300"
+        initialLikes={120}
+      />
+
+      <PostCard
+        username="hemanshi_g"
+        image="https://picsum.photos/301"
+        initialLikes={89}
+      />
     </div>
   )
 }
