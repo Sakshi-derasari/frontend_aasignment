@@ -5,11 +5,7 @@ const useLikeButton = (initialLikes = 0, initiallyLiked = false) => {
   const [isLiked, setIsLiked] = useState(initiallyLiked);
 
   const toggleLike = () => {
-    if (isLiked) {
-      setLikes((prev) => prev - 1);
-    } else {
-      setLikes((prev) => prev + 1);
-    }
+    setLikes((prev) => (isLiked ? prev - 1 : prev + 1));
     setIsLiked(!isLiked);
   };
 

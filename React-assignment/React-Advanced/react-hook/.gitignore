@@ -11,6 +11,16 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.development
+.env.production
+
+# Firebase
+.firebase
+*.log
+
+# Netlify
+.netlify
 
 # Editor directories and files
 .vscode/*
